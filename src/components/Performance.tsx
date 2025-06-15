@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Box, Paper, Typography, Grid, CircularProgress } from '@mui/material';
+import { Box, Paper, Typography, CircularProgress } from '@mui/material';
 
 const Performance = () => {
     const [metrics, setMetrics] = useState({
@@ -30,7 +30,10 @@ const Performance = () => {
                 textAlign: 'center',
                 background: 'linear-gradient(to bottom, #FFF8E7, #FFFFFF)',
                 border: '1px solid #DAA520',
-                height: '100%'
+                height: '100%',
+                flex: 1,
+                minWidth: { xs: '100%', md: '30%' },
+                mx: 1
             }}
         >
             <Typography
@@ -102,29 +105,29 @@ const Performance = () => {
                 Performance Metrics
             </Typography>
 
-            <Grid container spacing={3}>
-                <Grid item xs={12} md={4}>
-                    <MetricCard
-                        title="Bandwidth"
-                        value={metrics.bandwidth}
-                        unit=" Mbps"
-                    />
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <MetricCard
-                        title="Latency"
-                        value={metrics.latency}
-                        unit=" ms"
-                    />
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <MetricCard
-                        title="Memory Usage"
-                        value={metrics.memory}
-                        unit=" MB"
-                    />
-                </Grid>
-            </Grid>
+            <Box sx={{
+                display: 'flex',
+                flexDirection: { xs: 'column', md: 'row' },
+                gap: 3,
+                justifyContent: 'center',
+                alignItems: 'stretch'
+            }}>
+                <MetricCard
+                    title="Bandwidth"
+                    value={metrics.bandwidth}
+                    unit=" Mbps"
+                />
+                <MetricCard
+                    title="Latency"
+                    value={metrics.latency}
+                    unit=" ms"
+                />
+                <MetricCard
+                    title="Memory Usage"
+                    value={metrics.memory}
+                    unit=" MB"
+                />
+            </Box>
         </Box>
     );
 };
