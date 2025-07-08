@@ -1,6 +1,6 @@
-'use client';
-import { useState, useRef, useCallback } from 'react';
-import Webcam from 'react-webcam';
+"use client";
+import { useState, useRef, useCallback } from "react";
+import Webcam from "react-webcam";
 
 export default function Home() {
   const [image, setImage] = useState<string | null>(null);
@@ -34,11 +34,11 @@ export default function Home() {
 
     const blob = await fetch(image).then((res) => res.blob());
     const formData = new FormData();
-    formData.append('image', blob, 'photo.jpg');
+    formData.append("image", blob, "photo.jpg");
 
     // Replace 'http://YOUR_SERVER_IP:5000/match' with your actual backend endpoint
-    const res = await fetch('http://YOUR_SERVER_IP:5000/match', {
-      method: 'POST',
+    const res = await fetch("http://YOUR_SERVER_IP:5000/match", {
+      method: "POST",
       body: formData,
     });
 
@@ -49,7 +49,7 @@ export default function Home() {
 
   // Video constraints for the webcam (e.g., front camera)
   const videoConstraints = {
-    facingMode: 'user', // 'user' for front camera, 'environment' for back camera
+    facingMode: "user", // 'user' for front camera, 'environment' for back camera
   };
 
   return (
@@ -76,10 +76,16 @@ export default function Home() {
       ) : (
         <>
           {/* Display captured image or uploaded image */}
-          <img src={image} alt="Captured or Uploaded" className="mx-auto w-60 mb-4 border rounded shadow-md" />
+          <img
+            src={image}
+            alt="Captured or Uploaded"
+            className="mx-auto w-60 mb-4 border rounded shadow-md"
+          />
           <button
-              onClick={setImage(null); 
-            setLoading(false)} // Allows retaking the photo
+            onClick={() => {
+              setImage(null);
+              setLoading(false);
+            }}
             className="bg-yellow-600 text-white px-4 py-2 rounded mb-4 mr-2"
           >
             Retake Photo
@@ -95,7 +101,7 @@ export default function Home() {
         disabled={loading || !image}
         className="bg-blue-600 text-white px-4 py-2 rounded disabled:bg-gray-400"
       >
-        {loading ? 'Matching...' : 'Find Matches'}
+        {loading ? "Matching..." : "Find Matches"}
       </button>
 
       {/* Display matches */}
