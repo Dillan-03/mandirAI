@@ -19,33 +19,33 @@ export default function Home() {
   }, [webcamRef]);
 
   // Handle uploading a file (kept for flexibility, but can be removed if not needed)
-  const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => setImage(reader.result as string);
-      reader.readAsDataURL(file);
-    }
-  };
+  // const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files?.[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => setImage(reader.result as string);
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
-  const handleSubmit = async () => {
-    if (!image) return;
-    setLoading(true);
+  // const handleSubmit = async () => {
+  //   if (!image) return;
+  //   setLoading(true);
 
-    const blob = await fetch(image).then((res) => res.blob());
-    const formData = new FormData();
-    formData.append("image", blob, "photo.jpg");
+  //   const blob = await fetch(image).then((res) => res.blob());
+  //   const formData = new FormData();
+  //   formData.append("image", blob, "photo.jpg");
 
-    // Replace 'http://YOUR_SERVER_IP:5000/match' with your actual backend endpoint
-    const res = await fetch("http://YOUR_SERVER_IP:5000/match", {
-      method: "POST",
-      body: formData,
-    });
+  //   // Replace 'http://YOUR_SERVER_IP:5000/match' with your actual backend endpoint
+  //   const res = await fetch("http://YOUR_SERVER_IP:5000/match", {
+  //     method: "POST",
+  //     body: formData,
+  //   });
 
-    const data = await res.json();
-    setMatches(data.matches);
-    setLoading(false);
-  };
+  //   const data = await res.json();
+  //   setMatches(data.matches);
+  //   setLoading(false);
+  // };
 
   // Video constraints for the webcam (e.g., front camera)
   const videoConstraints = {
@@ -97,7 +97,7 @@ export default function Home() {
       {/* <input type="file" onChange={handleUpload} className="mb-4" /> */}
 
       <button
-        onClick={handleSubmit}
+        // onClick={handleSubmit}
         disabled={loading || !image}
         className="bg-blue-600 text-white px-4 py-2 rounded disabled:bg-gray-400"
       >
