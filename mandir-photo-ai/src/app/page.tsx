@@ -4,7 +4,7 @@ import Webcam from "react-webcam";
 
 export default function Home() {
   const [image, setImage] = useState<string | null>(null);
-  const [matches, setMatches] = useState<string[]>([]);
+  // const [matches, setMatches] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const webcamRef = useRef<Webcam>(null); // Reference to the webcam component
 
