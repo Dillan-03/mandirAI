@@ -106,14 +106,14 @@ export default function Home() {
 
       {/* Display matches */}
       <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-4">
-        {matches.map((img, i) => (
+        {/* {matches.map((img, i) => (
           <img
             key={i}
             src={`data:image/jpeg;base64,${img}`}
             alt={`Match ${i}`}
             className="border rounded shadow"
-          />
-        ))}
+          /> */}
+        {/* ))} */}
       </div>
     </div>
   );
