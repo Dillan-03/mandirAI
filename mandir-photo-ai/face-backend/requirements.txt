@@ -1,5 +1,5 @@
 flask
 keras_facenet
-faiss-cpu
+faiss-cpu==1.7.2.post2
 numpy
 pillow
